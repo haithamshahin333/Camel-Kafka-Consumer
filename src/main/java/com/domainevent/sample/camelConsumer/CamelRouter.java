@@ -8,7 +8,7 @@ public class CamelRouter extends RouteBuilder{
 
 	@Override
 	public void configure() throws Exception {
-		from("timer:foo?fixedRate=true&period=5s").to("log:foo?level=INFO");	
+		from("kafka:domaineventdb.public.events?brokers=my-cluster-kafka-bootstrap:9092").to("log:input");
 	}
 
 }
